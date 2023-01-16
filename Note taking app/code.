@@ -1,0 +1,36 @@
+function createNote(title, text) {
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  notes.push({ title, text });
+  localStorage.setItem("notes", JSON.stringify(notes));
+  console.log("Note created successfully!");
+  return notes;
+}
+
+
+You can call this function by passing in the title and text of the note you want to create, like so:
+
+createNote("Shopping List", "milk, bread, eggs");
+
+
+This function uses the localStorage API to store the notes. The note is added to the local storage and a message is displayed in the console.
+
+You can also add a function to retrieve all the notes:
+
+function getNotes() {
+  return JSON.parse(localStorage.getItem("notes")) || [];
+}
+
+
+You can also add a function to remove a specific note:
+
+function removeNote(title) {
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  const updatedNotes = notes.filter(note => note.title !== title);
+  localStorage.setItem("notes", JSON.stringify(updatedNotes));
+  console.log("Note removed successfully!");
+  return updatedNotes;
+}
+
+You can call this function by passing in the title of the note you want to remove, like so:
+
+removeNote("Shopping List");
